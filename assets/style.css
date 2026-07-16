@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Global Tags */
+
+
+
+
+
+
+
+/* Navigation */
+
+
+
+
+
+
+/* Home */
+
+
+
+
+
+/* Mission Statement */
+
+
+
+
+
+
+
+
+/* Events */
+
+
+
+
+
+
+
+
+
+
+
+
+/* Leaders */
+
+
+
+
+
+
+
+/* Footer */
+
+
+
+
+
+
+
+
+
+/* Responsive */
+
+@media (max-width:1400px) {}
+
+@media (max-width:1200px) {}
+
+@media (max-width:992px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width:575px) {}
+
+@media (max-width: 475px) {}
+
+@media (max-width:376px) {}
