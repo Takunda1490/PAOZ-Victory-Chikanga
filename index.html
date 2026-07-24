@@ -20,19 +20,34 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- preloader -->
+    <div class="preloader">
+      <img src="assets/favicon.jpg" alt="" class="preloader-item" />
+    </div>
     <!-- Navigation -->
     <nav class="nav">
-      <img src="assets/church_logo.png" alt="logo" />
+      <a href="index.html" class="logo">
+        <img src="assets/church_logo.png" alt="logo" />
+      </a>
+      
       <div class="navigation">
         <ul id="ul">
-          <i class="fas fa-times" id="menu-close"></i>
+
+          <button  id="menu-close">
+            <i class="fas fa-times"></i>
+          </button>
+          
           <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="#events" class="link-1">Events</a></li>
-          <li><a href="#map" class="link-2">Visit Us</a></li>
-          <li><a href="#stmt" class="link-3">About</a></li>
-          <li><a href="#footer" class="link-4">Contact</a></li>
+          <li><a href="#events" class="scroll-link">Events</a></li>
+          <li><a href="#map" class="scroll-link">Visit Us</a></li>
+          <li><a href="#stmt" class="scroll-link">About</a></li>
+          <li><a href="#footer" class="scroll-link">Contact</a></li>
         </ul>
-        <i class="fas fa-bars" id="menu-btn"></i>
+
+        <button id="menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+
       </div>
     </nav>
     <main>
@@ -56,32 +71,38 @@
       </section>
 
       <section id="carousel">
-          <ul class="has-scrollbar">
-            <li class="scrollbar-item">
-              <div class="card" style="
-            background-image:
-              linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
-              url(assets/Psalm16_8.jpeg);
-          ">
-              </div>
-            </li>
-            <li class="scrollbar-item">
-              <div class="card" style="
-            background-image:
-              linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
-              url(assets/Hebrews11_1.jpeg);
-          ">
-              </div>
-            </li>
-            <li class="scrollbar-item">
-              <div class="card" style="
-            background-image:
-              linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
-              url(assets/hope-in-jesus.jpg);
-          ">
-              </div>
-            </li>
-          </ul>
+        <ul class="has-scrollbar">
+          <li class="scrollbar-item">
+            <div
+              class="card"
+              style="
+                background-image:
+                  linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
+                  url(assets/Psalm16_8.jpeg);
+              "
+            ></div>
+          </li>
+          <li class="scrollbar-item">
+            <div
+              class="card"
+              style="
+                background-image:
+                  linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
+                  url(assets/Hebrews11_1.jpeg);
+              "
+            ></div>
+          </li>
+          <li class="scrollbar-item">
+            <div
+              class="card"
+              style="
+                background-image:
+                  linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
+                  url(assets/hope-in-jesus.jpg);
+              "
+            ></div>
+          </li>
+        </ul>
       </section>
 
       <!-- Services -->
@@ -260,9 +281,15 @@
             <p>Find us via our social media handles</p>
 
             <div class="profile-links">
-              <a href="https://www.facebook.com/profile.php?id=100083316068636"><i class="fab fa-facebook-f"></i></a>
-              <a href="https://wa.me/263733096391"><i class="fa-brands fa-whatsapp"></i></a>
-              <a href="https://maps.app.goo.gl/QkbCtkm7UCnAUh8x6"><i class="fa-solid fa-location-dot"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=100083316068636"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://wa.me/263733096391"
+                ><i class="fa-brands fa-whatsapp"></i
+              ></a>
+              <a href="https://maps.app.goo.gl/QkbCtkm7UCnAUh8x6"
+                ><i class="fa-solid fa-location-dot"></i
+              ></a>
             </div>
           </div>
 
@@ -296,7 +323,7 @@
               <a
                 href="tel:+263774178000"
                 class="footer-link"
-                style="font-style: italic; text-decoration: none;"
+                style="font-style: italic; text-decoration: none"
               >
                 <span>Call:</span>
                 <span>+263774178000</span>
@@ -319,11 +346,15 @@
       <div class="footer-bottom">
         <div class="container">
           <p class="copyright">
-            &copy; Copyright 2026 | TK - All Rights Reserved.
+            Copyright &copy; <i id="date"></i> | TK - All Rights Reserved
           </p>
         </div>
       </div>
     </footer>
+
+    <a class="top-link" href="#hero">
+      <i class="fas fa-arrow-up"></i>
+    </a>
 
     <script src="script.js"></script>
   </body>
