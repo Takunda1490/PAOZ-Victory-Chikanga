@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSite } from "../context/SiteContext";
 
-const SITE_URL = "https://paozvictorychikanga.org/";
+const SITE_URL = "https://paozvictorytabernaclechikanga.netlify.app/";
 
 const setMeta = (selector, attribute, value) => {
   if (!value) return;
