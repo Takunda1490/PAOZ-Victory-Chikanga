@@ -156,7 +156,7 @@ export function SiteProvider({ children }) {
     const inserts = payload
       .filter((row) => !row.id || !existingIds.has(row.id))
       // Don't send id on inserts; let DB generate UUID
-      .map(({ id, ...rest }) => rest);
+      .map(({ id: _id, ...rest }) => rest);
     const updates = payload.filter((row) => row.id && existingIds.has(row.id));
     const removed = [...existingIds].filter((id) => !payload.some((r) => r.id === id));
 
@@ -177,8 +177,8 @@ export function SiteProvider({ children }) {
     }
 
     for (const row of updates) {
-      const { id, ...rest } = row;
-      const { error } = await supabase.from(table).update(rest).eq("id", id);
+      const { id: _id, ...rest } = row;
+      const { error } = await supabase.from(table).update(rest).eq("id", _id);
       if (error) {
         setSaveState("error");
         throw error;
