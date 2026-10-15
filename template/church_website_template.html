@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grace Community Church</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.260.0/lucide.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a37c68', // Brand main color
+                            600: '#8c6856',
+                            700: '#755444',
+                            800: '#5e4033',
+                            900: '#483025',
+                        },
+                        secondary: '#2d3748',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Hero section parallax effect */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a37c68; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8c6856; 
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased overflow-x-hidden">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent text-white py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl md:text-3xl font-bold tracking-wider flex items-center gap-2">
+                        <i data-lucide="cross" class="w-8 h-8 text-primary-400"></i>
+                        GRACE<span class="font-light text-gray-200 text-lg md:text-xl">COMMUNITY</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="hover:text-primary-400 transition-colors duration-200 text-sm font-semibold uppercase tracking-wider">About Us</a>
+                    <a href="#sermons" class="hover:text-primary-400 transition-colors duration-200 text-sm font-semibold uppercase tracking-wider">Sermons</a>
+                    <a href="#events" class="hover:text-primary-400 transition-colors duration-200 text-sm font-semibold uppercase tracking-wider">Events</a>
+                    <a href="#ministries" class="hover:text-primary-400 transition-colors duration-200 text-sm font-semibold uppercase tracking-wider">Ministries</a>
+                    <a href="#contact" class="hover:text-primary-400 transition-colors duration-200 text-sm font-semibold uppercase tracking-wider">Contact</a>
+                    <a href="#" class="bg-primary-500 hover:bg-primary-600 text-white px-6 py-2 rounded-full font-semibold transition-colors duration-300 shadow-lg">Give Online</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-primary-400 focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white text-gray-800 shadow-xl absolute top-full left-0 w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-3 hover:bg-gray-50 hover:text-primary-500 rounded-md font-semibold text-lg border-b border-gray-100">About Us</a>
+                <a href="#sermons" class="block px-3 py-3 hover:bg-gray-50 hover:text-primary-500 rounded-md font-semibold text-lg border-b border-gray-100">Sermons</a>
+                <a href="#events" class="block px-3 py-3 hover:bg-gray-50 hover:text-primary-500 rounded-md font-semibold text-lg border-b border-gray-100">Events</a>
+                <a href="#ministries" class="block px-3 py-3 hover:bg-gray-50 hover:text-primary-500 rounded-md font-semibold text-lg border-b border-gray-100">Ministries</a>
+                <a href="#contact" class="block px-3 py-3 hover:bg-gray-50 hover:text-primary-500 rounded-md font-semibold text-lg border-b border-gray-100">Contact</a>
+                <div class="pt-4">
+                    <a href="#" class="block w-full text-center bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-full font-semibold transition-colors duration-300">Give Online</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-bg h-screen flex items-center justify-center relative">
+        <div class="text-center px-4 max-w-4xl mx-auto z-10">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 animate-fade-in leading-tight">Welcome Home</h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-10 font-light animate-fade-in delay-100 max-w-2xl mx-auto">Experiencing God's grace, growing in faith, and serving our community together.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in delay-200">
+                <a href="#visit" class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl inline-flex items-center justify-center gap-2">
+                    <i data-lucide="map-pin" class="w-5 h-5"></i> Plan a Visit
+                </a>
+                <a href="#sermons" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center justify-center gap-2">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> Watch Latest Sermon
+                </a>
+            </div>
+        </div>
+        
+        <!-- Service Times Quick Info Box -->
+        <div class="absolute bottom-0 w-full transform translate-y-1/2 z-20 px-4">
+            <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl p-6 md:p-10 flex flex-col md:flex-row justify-between items-center gap-8 border-t-4 border-primary-500 animate-fade-in delay-300">
+                <div class="flex items-center gap-4 w-full md:w-auto justify-center md:justify-start">
+                    <div class="bg-primary-100 p-4 rounded-full text-primary-600">
+                        <i data-lucide="clock" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif font-bold text-xl text-gray-900">Sunday Services</h3>
+                        <p class="text-gray-600">9:00 AM & 11:00 AM</p>
+                    </div>
+                </div>
+                <div class="hidden md:block w-px h-16 bg-gray-200"></div>
+                <div class="flex items-center gap-4 w-full md:w-auto justify-center md:justify-start">
+                    <div class="bg-primary-100 p-4 rounded-full text-primary-600">
+                        <i data-lucide="map" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif font-bold text-xl text-gray-900">Location</h3>
+                        <p class="text-gray-600">123 Faith Avenue, Cityville</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-auto text-center">
+                    <a href="#contact" class="text-primary-600 font-semibold hover:text-primary-700 underline underline-offset-4 decoration-2">Get Directions &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="pt-40 pb-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Church Congregation" class="rounded-lg shadow-xl w-full object-cover h-[500px]">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl hidden md:block">
+                        <p class="font-serif text-4xl font-bold text-primary-500 mb-1">50+</p>
+                        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Years of Ministry</p>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-primary-500 font-bold tracking-wider uppercase text-sm">Who We Are</span>
+                    <h2 class="mt-2 text-4xl font-serif font-bold text-gray-900 mb-6">A Church for the City. A Family for You.</h2>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        At Grace Community, we believe that church isn't just a building you go to, but a family you belong to. We are a diverse community of believers committed to loving God, loving people, and making a difference in our world.
+                    </p>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                        Whether you're exploring faith for the first time or looking for a place to call home, there's a place for you here. Come as you are, and experience the transformative power of God's love.
+                    </p>
+                    <a href="#about-more" class="inline-flex items-center gap-2 text-gray-900 font-semibold hover:text-primary-600 transition-colors group">
+                        Read Our Beliefs 
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sermons" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-primary-500 font-bold tracking-wider uppercase text-sm">Latest Messages</span>
+                    <h2 class="mt-2 text-4xl font-serif font-bold text-gray-900">Watch & Listen</h2>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center gap-2 text-gray-600 font-semibold hover:text-primary-600 transition-colors">
+                    View All Sermons <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Sermon Card 1 -->
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-xl mb-4 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1543883017-d5ab7d45610e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail" class="w-full h-60 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="bg-primary-500 rounded-full p-4 text-white transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <i data-lucide="play" class="w-8 h-8 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-primary-600 font-semibold mb-1">October 1, 2026 &bull; Pastor John Doe</p>
+                    <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary-500 transition-colors line-clamp-2">Walking in Faith During Uncertain Times</h3>
+                    <div class="flex gap-4 mt-3">
+                        <button class="text-gray-500 hover:text-primary-500 flex items-center gap-1 text-sm"><i data-lucide="video" class="w-4 h-4"></i> Watch</button>
+                        <button class="text-gray-500 hover:text-primary-500 flex items-center gap-1 text-sm"><i data-lucide="headphones" class="w-4 h-4"></i> Listen</button>
+                    </div>
+                </div>
+
+                <!-- Sermon Card 2 -->
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-xl mb-4 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail" class="w-full h-60 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="bg-primary-500 rounded-full p-4 text-white transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <i data-lucide="play" class="w-8 h-8 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-primary-600 font-semibold mb-1">September 24, 2026 &bull; Rev. Sarah Smith</p>
+                    <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary-500 transition-colors line-clamp-2">The Power of Forgiveness and Grace</h3>
+                    <div class="flex gap-4 mt-3">
+                        <button class="text-gray-500 hover:text-primary-500 flex items-center gap-1 text-sm"><i data-lucide="video" class="w-4 h-4"></i> Watch</button>
+                        <button class="text-gray-500 hover:text-primary-500 flex items-center gap-1 text-sm"><i data-lucide="headphones" class="w-4 h-4"></i> Listen</button>
+                    </div>
+                </div>
+
+                <!-- Sermon Card 3 -->
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-xl mb-4 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1469041797191-50ace28483c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail" class="w-full h-60 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="bg-primary-500 rounded-full p-4 text-white transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <i data-lucide="play" class="w-8 h-8 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-primary-600 font-semibold mb-1">September 17, 2026 &bull; Pastor John Doe</p>
+                    <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary-500 transition-colors line-clamp-2">Building Strong Foundations for Life</h3>
+                    <div class="flex gap-4 mt-3">
+                        <button class="text-gray-500 hover:text-primary-500 flex items-center gap-1 text-sm"><i data-lucide="video" class="w-4 h-4"></i> Watch</button>
+                        <button class="text-gray-500 hover:text-primary-500 flex items-center gap-1 text-sm"><i data-lucide="headphones" class="w-4 h-4"></i> Listen</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                <a href="#" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+                    View All Sermons <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="py-20 bg-secondary text-white relative">
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M0 40L40 0H20L0 20M40 40V20L20 40" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#pattern)"/>
+            </svg>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-primary-400 font-bold tracking-wider uppercase text-sm">Join Us</span>
+                <h2 class="mt-2 text-4xl font-serif font-bold text-white">Upcoming Events</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Event 1 -->
+                <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-primary-500 text-white text-center rounded-lg px-4 py-2 shadow-md">
+                            <span class="block text-sm font-bold uppercase">Oct</span>
+                            <span class="block text-2xl font-serif font-bold">15</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Youth Group Retreat</h3>
+                    <p class="text-gray-300 text-sm mb-4">A weekend of worship, fellowship, and outdoor activities for high school students.</p>
+                    <div class="flex items-center text-sm text-primary-300 gap-2 mb-4">
+                        <i data-lucide="clock" class="w-4 h-4"></i> 5:00 PM Friday
+                    </div>
+                    <a href="#" class="text-white font-semibold text-sm hover:text-primary-400 flex items-center gap-1 group">
+                        Details <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-primary-500 text-white text-center rounded-lg px-4 py-2 shadow-md">
+                            <span class="block text-sm font-bold uppercase">Oct</span>
+                            <span class="block text-2xl font-serif font-bold">22</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Community Food Drive</h3>
+                    <p class="text-gray-300 text-sm mb-4">Help us pack and distribute groceries to families in need within our local community.</p>
+                    <div class="flex items-center text-sm text-primary-300 gap-2 mb-4">
+                        <i data-lucide="clock" class="w-4 h-4"></i> 9:00 AM - 1:00 PM
+                    </div>
+                    <a href="#" class="text-white font-semibold text-sm hover:text-primary-400 flex items-center gap-1 group">
+                        Details <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-primary-500 text-white text-center rounded-lg px-4 py-2 shadow-md">
+                            <span class="block text-sm font-bold uppercase">Nov</span>
+                            <span class="block text-2xl font-serif font-bold">05</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Women's Breakfast</h3>
+                    <p class="text-gray-300 text-sm mb-4">Join us for a morning of encouraging words, prayer, and delicious food.</p>
+                    <div class="flex items-center text-sm text-primary-300 gap-2 mb-4">
+                        <i data-lucide="clock" class="w-4 h-4"></i> 8:30 AM
+                    </div>
+                    <a href="#" class="text-white font-semibold text-sm hover:text-primary-400 flex items-center gap-1 group">
+                        Details <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 flex flex-col justify-center items-center text-center">
+                   <div class="w-16 h-16 rounded-full bg-primary-500 flex items-center justify-center mb-4">
+                       <i data-lucide="calendar" class="w-8 h-8 text-white"></i>
+                   </div>
+                   <h3 class="text-xl font-bold mb-2">View Full Calendar</h3>
+                   <p class="text-gray-300 text-sm mb-6">See everything happening at Grace Community Church this month.</p>
+                   <a href="#" class="bg-white text-secondary px-6 py-2 rounded-full font-bold hover:bg-primary-50 transition-colors">See All Events</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ministries" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 max-w-2xl mx-auto">
+                <span class="text-primary-500 font-bold tracking-wider uppercase text-sm">Find Your Place</span>
+                <h2 class="mt-2 text-4xl font-serif font-bold text-gray-900 mb-4">Ministries & Groups</h2>
+                <p class="text-gray-600">We believe spiritual growth happens best in relationships. Find a ministry or connect group where you can grow, serve, and belong.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Ministry 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Grace Kids" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4 -mt-12 shadow-md relative z-10">
+                            <i data-lucide="baby" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-2">Grace Kids</h3>
+                        <p class="text-gray-600 mb-4">A fun, safe, and engaging environment where children (infants through 5th grade) learn about God's love on their level.</p>
+                        <a href="#" class="text-primary-600 font-semibold hover:text-primary-800 flex items-center gap-1 text-sm">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+                <!-- Ministry 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1529156069898-49953eb1b5ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Youth Ministry" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4 -mt-12 shadow-md relative z-10">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-2">Student Ministry</h3>
+                        <p class="text-gray-600 mb-4">Empowering middle and high school students to discover their identity in Christ and navigate life's challenges together.</p>
+                        <a href="#" class="text-primary-600 font-semibold hover:text-primary-800 flex items-center gap-1 text-sm">Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+                <!-- Ministry 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Small Groups" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4 -mt-12 shadow-md relative z-10">
+                            <i data-lucide="coffee" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-2">Connect Groups</h3>
+                        <p class="text-gray-600 mb-4">Small groups meeting throughout the week in homes and cafes to discuss Sunday's message, pray, and build lasting friendships.</p>
+                        <a href="#" class="text-primary-600 font-semibold hover:text-primary-800 flex items-center gap-1 text-sm">Find a Group <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-gray-900 text-white pt-16 pb-8 border-t-4 border-primary-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Brand Info -->
+                <div>
+                    <a href="#" class="font-serif text-2xl font-bold tracking-wider flex items-center gap-2 mb-6">
+                        <i data-lucide="cross" class="w-6 h-6 text-primary-400"></i>
+                        GRACE<span class="font-light text-gray-400">COMMUNITY</span>
+                    </a>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                        A place to believe, belong, and become all that God created you to be. Join us this Sunday as we worship together.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary-500 hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary-500 hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary-500 hover:text-white transition-colors">
+                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary-500 hover:text-white transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold font-serif mb-6 text-white relative inline-block">
+                        Quick Links
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-primary-500 -mb-2"></span>
+                    </h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="#about" class="hover:text-primary-400 transition-colors">Our Story & Beliefs</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Leadership Team</a></li>
+                        <li><a href="#sermons" class="hover:text-primary-400 transition-colors">Sermon Archive</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Plan Your Visit</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Give Online</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-bold font-serif mb-6 text-white relative inline-block">
+                        Contact Us
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-primary-500 -mb-2"></span>
+                    </h4>
+                    <ul class="space-y-4 text-gray-400 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-primary-400 shrink-0 mt-0.5"></i>
+                            <span>123 Faith Avenue<br>Cityville, ST 12345</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-primary-400 shrink-0"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-primary-400 shrink-0"></i>
+                            <a href="mailto:hello@gracecommunity.org" class="hover:text-white transition-colors">hello@gracecommunity.org</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-lg font-bold font-serif mb-6 text-white relative inline-block">
+                        Newsletter
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-primary-500 -mb-2"></span>
+                    </h4>
+                    <p class="text-gray-400 text-sm mb-4">Subscribe to receive weekly updates, encouragement, and event news.</p>
+                    <form class="space-y-2">
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 text-sm" required>
+                        <button type="submit" class="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-2 px-4 rounded-md transition-colors text-sm">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Grace Community Church. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        const scrollThreshold = 50;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > scrollThreshold) {
+                // Scrolled state
+                navbar.classList.add('bg-white', 'shadow-md', 'text-gray-900', 'py-2');
+                navbar.classList.remove('bg-transparent', 'text-white', 'py-4');
+                
+                // Update logo text color
+                const logoSpan = navbar.querySelector('.font-light');
+                logoSpan.classList.remove('text-gray-200');
+                logoSpan.classList.add('text-gray-600');
+
+                // Update mobile menu button color
+                btn.classList.remove('text-white');
+                btn.classList.add('text-gray-900');
+            } else {
+                // Top state
+                navbar.classList.remove('bg-white', 'shadow-md', 'text-gray-900', 'py-2');
+                navbar.classList.add('bg-transparent', 'text-white', 'py-4');
+                
+                // Update logo text color
+                const logoSpan = navbar.querySelector('.font-light');
+                logoSpan.classList.add('text-gray-200');
+                logoSpan.classList.remove('text-gray-600');
+
+                // Update mobile menu button color
+                btn.classList.add('text-white');
+                btn.classList.remove('text-gray-900');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

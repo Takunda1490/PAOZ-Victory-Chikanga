@@ -2,360 +2,103 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpeg" href="/assets/favicon.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Victory Chikanga</title>
-    <link rel="shortcut icon" href="./favicon.jpg" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+
+    <title>
+      PAOZ Victory Tabernacle Chikanga | A Place to Worship the Lord
+    </title>
+    <meta
+      name="description"
+      content="PAOZ Victory Tabernacle Chikanga is a church in Mutare, Zimbabwe. Sunday 09:00-12:30, Monday and Wednesday 17:00-18:00. Stand No. 10B, World Bank Street, Chikanga 1."
     />
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="keywords"
+      content="PAOZ Victory Tabernacle, Chikanga church, churches in Mutare, Zimbabwe church, Sunday service Mutare, World Bank Street Chikanga"
+    />
+    <meta name="author" content="PAOZ Victory Tabernacle Chikanga" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#183d1e" />
+    <link rel="canonical" href="https://paozvictorychikanga.org/" />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:site_name"
+      content="PAOZ Victory Tabernacle Chikanga"
+    />
+    <meta
+      property="og:title"
+      content="PAOZ Victory Tabernacle Chikanga | A Place to Worship the Lord"
+    />
+    <meta
+      property="og:description"
+      content="A church in Mutare, Zimbabwe. Join us for worship, the Word and prayer. Stand No. 10B, World Bank Street, Chikanga 1."
+    />
+    <meta property="og:url" content="https://paozvictorychikanga.org/" />
+    <meta property="og:image" content="/assets/green_bg_one.jpg" />
+    <meta property="og:locale" content="en_ZW" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="PAOZ Victory Tabernacle Chikanga | A Place to Worship the Lord"
+    />
+    <meta
+      name="twitter:description"
+      content="A church in Mutare, Zimbabwe. Join us for worship, the Word and prayer."
+    />
+    <meta name="twitter:image" content="/assets/green_bg_one.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="/assets/green_bg_one.jpg" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <script type="application/ld+json" id="church-schema">
+      {
+        "@context": "https://schema.org",
+        "@type": "Church",
+        "name": "PAOZ Victory Tabernacle Chikanga",
+        "alternateName": "PAOZ Victory Tabernacle",
+        "description": "A church in Mutare, Zimbabwe, committed to worship, the Word and serving the community.",
+        "url": "https://paozvictorychikanga.org/",
+        "image": "https://paozvictorychikanga.org/assets/green_bg_one.jpg",
+        "logo": "https://paozvictorychikanga.org/assets/church_logo.png",
+        "telephone": "+263774178000",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Stand No. 10B, World Bank Street, Chikanga 1",
+          "addressLocality": "Mutare",
+          "addressCountry": "ZW"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -18.98361580953511,
+          "longitude": 32.611242673890686
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "09:00",
+            "closes": "12:30"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Wednesday"],
+            "opens": "17:00",
+            "closes": "18:00"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
-    <!-- preloader -->
-    <div class="preloader">
-      <img src="assets/favicon.jpg" alt="" class="preloader-item" />
-    </div>
-    <!-- Navigation -->
-    <nav class="nav">
-      <a href="index.html" class="logo">
-        <img src="assets/church_logo.png" alt="logo" />
-      </a>
-      
-      <div class="navigation">
-        <ul id="ul">
-
-          <button  id="menu-close">
-            <i class="fas fa-times"></i>
-          </button>
-          
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="#events" class="scroll-link">Events</a></li>
-          <li><a href="#map" class="scroll-link">Visit Us</a></li>
-          <li><a href="#stmt" class="scroll-link">About</a></li>
-          <li><a href="#footer" class="scroll-link">Contact</a></li>
-        </ul>
-
-        <button id="menu-btn">
-          <i class="fas fa-bars"></i>
-        </button>
-
-      </div>
-    </nav>
-    <main>
-      <!-- Hero -->
-
-      <section id="hero">
-        <div class="hero-left">
-          <h3 class="scripture">Psalm 122:1</h3>
-          <br />
-          <h1 class="title">PAOZ Victory Tabernacle Chikanga</h1>
-          <br />
-          <p class="greetings">A place to worship the Lord</p>
-          <br />
-          <div class="btn">
-            <a href="#services" class="red">SERVICES</a>
-          </div>
-        </div>
-        <div class="hero-right">
-          <img src="assets/scripture_one.jpg" alt="" />
-        </div>
-      </section>
-
-      <section id="carousel">
-        <ul class="has-scrollbar">
-          <li class="scrollbar-item">
-            <div
-              class="card"
-              style="
-                background-image:
-                  linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
-                  url(assets/Psalm16_8.jpeg);
-              "
-            ></div>
-          </li>
-          <li class="scrollbar-item">
-            <div
-              class="card"
-              style="
-                background-image:
-                  linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
-                  url(assets/Hebrews11_1.jpeg);
-              "
-            ></div>
-          </li>
-          <li class="scrollbar-item">
-            <div
-              class="card"
-              style="
-                background-image:
-                  linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
-                  url(assets/hope-in-jesus.jpg);
-              "
-            ></div>
-          </li>
-        </ul>
-      </section>
-
-      <!-- Services -->
-      <section id="services">
-        <div
-          class="service"
-          style="
-            background-image:
-              linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
-              url(assets/bg1.jpg);
-          "
-        >
-          <h2>Sunday</h2>
-          <p>09:00 - 12:30</p>
-        </div>
-        <div
-          class="service"
-          style="
-            background-image:
-              linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
-              url(assets/bg6.jpg);
-          "
-        >
-          <h2>Monday</h2>
-          <p>17:00 - 18:00</p>
-        </div>
-        <div
-          class="service"
-          style="
-            background-image:
-              linear-gradient(rgba(77, 56, 56, 0.103), rgba(0, 0, 0, 0.7)),
-              url(assets/bg3.jpg);
-          "
-        >
-          <h2>Wednesday</h2>
-          <p>17:00 - 18:00</p>
-        </div>
-      </section>
-
-      <!-- Mission Statement -->
-      <section id="stmt">
-        <h2 class="heading">MISSION STATEMENT</h2>
-        <div class="stmt-container">
-          <div class="stmt-box">
-            <img src="assets/cross_two.jpg" alt="" class="stmt-img" />
-            <h4>Evangelism and Discipleship</h4>
-            <p>
-              Matthew 28:19-20 | To lead people to a life-changing relationship
-              with Jesus Christ.
-            </p>
-          </div>
-
-          <div class="stmt-box">
-            <img src="assets/dove.webp" alt="" class="stmt-img" />
-            <h4>Love and Justice</h4>
-            <p>
-              Matthew 25:35-36 | To love our neighbours as ourselves, serving
-              our community with compassion.
-            </p>
-          </div>
-
-          <div class="stmt-box">
-            <img src="assets/bg9.jpg" alt="" class="stmt-img" />
-            <h4>Worship and Presence</h4>
-            <p>
-              1 Peter 2:9 | Glorifying God through worship and building a family
-              rooted in His Word.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Events -->
-      <section id="events">
-        <h2>EVENTS</h2>
-        <div class="event-container">
-          <div class="event">
-            <img src="assets/event_one.png" alt="" class="event-img" />
-            <div class="details">
-              <h4>EVENT TITLE: Light up for Christ</h4>
-              <h4>Guest Speaker: Pstr Karen</h4>
-              <h4>Friday 19 June 2026 | 21:00</h4>
-              <h4>World Bank Street, Stand No 10B</h4>
-            </div>
-          </div>
-          <hr />
-        </div>
-      </section>
-
-      <section id="msg">
-        <div class="msg-left">
-          <img src="assets/bible_one.avif" alt="" />
-        </div>
-
-        <div class="msg-right">
-          <h2 class="msg-title">Message Title</h2>
-          <span>Key Scriptures: Romans 5:8-13, Genesis 20:13</span>
-          <p class="msg-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-            doloribus iure iusto eaque eos provident nam, asperiores alias
-            explicabo hic eligendi id maiores molestiae nesciunt veniam soluta
-            molestias deleniti reiciendis! Adipisci doloribus iure iusto eaque
-            eos provident nam, asperiores alias explicabo hic eligendi id
-            maiores molestiae nesciunt veniam soluta molestias deleniti
-            reiciendis!
-          </p>
-        </div>
-      </section>
-
-      <!-- map -->
-      <section id="map">
-        <h2>
-          FIND US AT |
-          <span
-            >Stand No. 10B ~ World Bank Street ~ Chikanga 1 ~ Mutare ~
-            Zimbabwe</span
-          >
-        </h2>
-
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.8186283659225!2d32.611242673890686!3d-18.98361580953511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x192ce906207d6a47%3A0x9693dc47f5d7821c!2sPAOZ%20Victory%20Tabernacle%20Chikanga!5e0!3m2!1sen!2szw!4v1784570406011!5m2!1sen!2szw"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin"
-        ></iframe>
-      </section>
-
-      <!-- Leaders -->
-      <!-- <section id="leaders">
-        <h2>Our leaders</h2>
-        <div class="leader-container">
-          <div class="profile">
-            <img src="assets/pngtree-a-3d-white-dove-holding-olive-branch-on-realistic-png-image_16599364.webp" alt="" />
-            <h6>Name</h6>
-            <p>Title</p>
-            <div class="profile-links">
-                <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-linkedin-in"></i>
-            </div>
-          </div>
-
-          <div class="profile">
-            <img src="assets/pngtree-a-3d-white-dove-holding-olive-branch-on-realistic-png-image_16599364.webp" alt="" />
-            <h6>Name</h6>
-            <p>Title</p>
-            <div class="profile-links">
-                <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-linkedin-in"></i>
-            </div>
-          </div>
-
-          <div class="profile">
-            <img src="assets/pngtree-a-3d-white-dove-holding-olive-branch-on-realistic-png-image_16599364.webp" alt="" />
-            <h6>Name</h6>
-            <p>Title</p>
-            <div class="profile-links">
-                <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-linkedin-in"></i>
-            </div>
-          </div>
-        </div>
-      </section> -->
-    </main>
-
-    <!-- Footer -->
-    <footer id="footer">
-      <div class="footer-top">
-        <div class="container">
-          <div class="footer-brand">
-            <img src="assets/church_logo.png" alt="" width="200" />
-
-            <p>Find us via our social media handles</p>
-
-            <div class="profile-links">
-              <a href="https://www.facebook.com/profile.php?id=100083316068636"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a href="https://wa.me/263733096391"
-                ><i class="fa-brands fa-whatsapp"></i
-              ></a>
-              <a href="https://maps.app.goo.gl/QkbCtkm7UCnAUh8x6"
-                ><i class="fa-solid fa-location-dot"></i
-              ></a>
-            </div>
-          </div>
-
-          <ul class="footer-list">
-            <li>
-              <h4>Opening Hours</h4>
-            </li>
-
-            <li>
-              <p>Sunday</p>
-              <span>09:00 - 12:30</span>
-            </li>
-
-            <li>
-              <p>Monday</p>
-              <span>17:00 - 18:00</span>
-            </li>
-
-            <li>
-              <p>Wednesday</p>
-              <span>17:00 - 18:00</span>
-            </li>
-          </ul>
-
-          <ul class="footer-list">
-            <li>
-              <h4>Contact Info</h4>
-            </li>
-
-            <li>
-              <a
-                href="tel:+263774178000"
-                class="footer-link"
-                style="font-style: italic; text-decoration: none"
-              >
-                <span>Call:</span>
-                <span>+263774178000</span>
-              </a>
-            </li>
-
-            <li>
-              <address class="footer-link">
-                <span>Location:</span>
-                <span
-                  >Stand No. 10B, World Bank Street, Chikanga 1, Mutare
-                  ,Zimbabwe</span
-                >
-              </address>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div class="container">
-          <p class="copyright">
-            Copyright &copy; <i id="date"></i> | TK - All Rights Reserved
-          </p>
-        </div>
-      </div>
-    </footer>
-
-    <a class="top-link" href="#hero">
-      <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <script src="script.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
