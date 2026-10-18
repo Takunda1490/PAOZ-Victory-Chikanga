@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import Picture from "./Picture";
 import { useSite } from "../context/SiteContext";
 
 export default function ScriptureSlider() {
@@ -69,12 +70,13 @@ export default function ScriptureSlider() {
                 className="min-w-0 shrink-0 grow-0 basis-full grid md:grid-cols-2 gap-8 items-center bg-gray-50 rounded-2xl border border-gray-100 shadow-sm"
               >
                 <div className="relative h-64 sm:h-80 md:h-[420px] bg-primary-900 flex items-center justify-center p-4">
-                  <img
-                    src={slide.image_url}
-                    alt={`${slide.reference} — ${slide.title}`}
-                    loading={i === 0 ? "eager" : "lazy"}
-                    className="max-w-full max-h-full w-auto h-auto object-contain rounded-lg shadow-xl"
-                  />
+<Picture
+                      src={slide.image_url}
+                      alt={`${slide.reference} — ${slide.title}`}
+                      sizes="slider"
+                      eager={i === 0}
+                      className="max-w-full max-h-full w-auto h-auto object-contain rounded-lg shadow-xl"
+                    />
                 </div>
 
                 <div className="px-6 sm:px-10 pb-10 md:pb-0 md:pr-12">

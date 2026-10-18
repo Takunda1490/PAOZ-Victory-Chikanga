@@ -1,4 +1,5 @@
 import { Clock, MapPin, Calendar, ChevronRight } from "lucide-react";
+import Picture from "./Picture";
 import { useSite } from "../context/SiteContext";
 
 export default function Events() {
@@ -100,11 +101,12 @@ export default function Events() {
                   rel="noreferrer"
                   className="group relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden hover:bg-white/20 transition-all duration-300"
                 >
-                  <img
-                    src={event.poster_url}
-                    alt={`${event.title} event poster`}
-                    className="w-full h-full object-contain bg-gray-900 transition-transform duration-500 group-hover:scale-105 p-3"
-                  />
+<Picture
+                      src={event.poster_url}
+                      alt={`${event.title} event poster`}
+                      sizes="wide"
+                      className="w-full h-full object-contain bg-gray-900 transition-transform duration-500 group-hover:scale-105 p-3"
+                    />
                 </a>
               )}
             </div>

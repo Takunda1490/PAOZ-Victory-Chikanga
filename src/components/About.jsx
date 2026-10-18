@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Picture from "./Picture";
 import { useSite } from "../context/SiteContext";
 
 export default function About() {
@@ -10,9 +11,10 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <img
+              <Picture
                 src={about.image}
                 alt="Scripture and worship"
+                sizes="wide"
                 className="rounded-lg shadow-xl w-full object-cover h-[500px]"
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl hidden md:block border-t-4 border-primary-600">
@@ -51,7 +53,7 @@ export default function About() {
 
       <section
         id="pillars"
-        className="py-20 bg-cover bg-center bg-fixed"
+        className="py-20 bg-cover bg-center"
         style={{
           backgroundImage:
             "linear-gradient(rgba(11, 40, 15, 0.72), rgba(11, 40, 15, 0.82)), url('/assets/devotion-green.webp')",
@@ -74,9 +76,10 @@ export default function About() {
                 className="group bg-white rounded-xl shadow-lg overflow-hidden text-center"
               >
                 <div className="h-52 overflow-hidden">
-                  <img
+                  <Picture
                     src={pillar.image_url}
                     alt={pillar.title}
+                    sizes="card"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>

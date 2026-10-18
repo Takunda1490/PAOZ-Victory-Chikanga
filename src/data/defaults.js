@@ -37,7 +37,7 @@ export const defaults = {
     subtitle: "A place to worship the Lord",
     ctaPrimaryLabel: "Service Times",
     ctaSecondaryLabel: "Plan a Visit",
-    image: "/assets/green_bg_one.jpg",
+    image: "/assets/green_bg_one.webp",
     quickTitle: "Sunday Service",
     quickTime: "09:00 - 12:30",
     quickLocationLabel: "Location",
@@ -161,7 +161,7 @@ export const defaultScriptures = [
     verse:
       "I have set the LORD always before me; for he is at my right hand, so I shall not slip.",
     note: "A life anchored in God cannot be shaken, because the One who holds us also holds our steps.",
-    image_url: "/assets/Psalm16_8.jpeg",
+    image_url: "/assets/Psalm16_8.webp",
   },
   {
     id: "v2",
@@ -170,7 +170,7 @@ export const defaultScriptures = [
     verse:
       "Now faith is being sure of what we hope for and being certain of what we do not see.",
     note: "Faith lets us walk with God into seasons we cannot yet explain.",
-    image_url: "/assets/Hebrews11_1.jpeg",
+    image_url: "/assets/Hebrews11_1.webp",
   },
   {
     id: "v3",

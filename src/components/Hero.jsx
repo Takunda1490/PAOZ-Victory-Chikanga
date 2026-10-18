@@ -8,9 +8,9 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative h-screen min-h-[640px] flex items-center justify-center bg-cover bg-center bg-fixed"
+      className="relative h-screen min-h-[640px] flex items-center justify-center bg-cover bg-center"
       style={{
-        backgroundImage: `linear-gradient(rgba(11, 40, 15, 0.72), rgba(11, 40, 15, 0.78)), url('${hero.image}')`,
+        backgroundImage: `linear-gradient(rgba(11, 40, 15, 0.72), rgba(11, 40, 15, 0.78)), url('${typeof hero.image === "string" && hero.image.startsWith("/assets/") ? hero.image.replace(/\.(jpe?g|png)$/i, ".webp") : hero.image}')`,
       }}
     >
       <div className="text-center px-4 max-w-4xl mx-auto z-10">
