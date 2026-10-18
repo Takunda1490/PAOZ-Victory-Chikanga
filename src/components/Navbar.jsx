@@ -69,7 +69,7 @@ export default function Navbar() {
             aria-label={`${settings.churchName} home`}
           >
             <img
-              src="/assets/church_logo.png"
+              src="/assets/church_logo.jpg"
               alt={`${settings.churchName} logo`}
               className="h-14 md:h-16 w-auto"
             />
