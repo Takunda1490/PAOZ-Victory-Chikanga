@@ -1,6 +1,6 @@
 import { Clock } from "lucide-react";
-import Picture from "./Picture";
-import { useSite } from "../context/SiteContext";
+import Picture from "../ui/Picture";
+import { useSite } from "../../context/SiteContext";
 
 export default function Services() {
   const { services: copy, services: items = [] } = useSite();

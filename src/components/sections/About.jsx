@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import Picture from "./Picture";
-import { useSite } from "../context/SiteContext";
+import Picture from "../ui/Picture";
+import { useSite } from "../../context/SiteContext";
 
 export default function About() {
   const { about, pillars: copy, pillars: items = [] } = useSite();

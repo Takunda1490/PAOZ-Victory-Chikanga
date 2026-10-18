@@ -2,8 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import Picture from "./Picture";
-import { useSite } from "../context/SiteContext";
+import Picture from "../ui/Picture";
+import { useSite } from "../../context/SiteContext";
 
 export default function ScriptureSlider() {
   const { scriptures: copy, scriptures: slides = [] } = useSite();
@@ -31,7 +31,7 @@ export default function ScriptureSlider() {
   if (!slides.length) return null;
 
   return (
-    <section className="bg-white py-20">
+    <section id="scriptures" className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-end mb-10">
           <div>

@@ -1,5 +1,5 @@
 import { MapPin, ExternalLink } from "lucide-react";
-import { useSite } from "../context/SiteContext";
+import { useSite } from "../../context/SiteContext";
 
 export default function VisitUs() {
   const { visit, settings } = useSite();

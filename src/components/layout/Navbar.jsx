@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Cross, Phone, HandHeart } from "lucide-react";
-import { useSite } from "../context/SiteContext";
+import { useSite } from "../../context/SiteContext";
 
 export default function Navbar() {
   const { settings, nav } = useSite();

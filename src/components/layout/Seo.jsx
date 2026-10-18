@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSite } from "../context/SiteContext";
+import { useSite } from "../../context/SiteContext";
 
 const SITE_URL = "https://paozvictorytabernaclechikanga.netlify.app/";
 

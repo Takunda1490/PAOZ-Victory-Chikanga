@@ -21,6 +21,20 @@ export default function AdminApp() {
   const [tab, setTab] = useState(sectionSpecs[0].key);
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    let tag = document.head.querySelector('meta[name="robots"]');
+    if (!tag) {
+      tag = document.createElement("meta");
+      tag.setAttribute("name", "robots");
+      document.head.appendChild(tag);
+    }
+    tag.setAttribute("content", "noindex, nofollow");
+    return () => {
+      const t = document.head.querySelector('meta[name="robots"]');
+      if (t) t.remove();
+    };
+  }, []);
+
   const { saveCollection, saveState, connected, loading } = useSite();
 
   useEffect(() => {

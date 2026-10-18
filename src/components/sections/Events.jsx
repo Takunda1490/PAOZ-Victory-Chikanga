@@ -1,6 +1,6 @@
 import { Clock, MapPin, Calendar, ChevronRight } from "lucide-react";
-import Picture from "./Picture";
-import { useSite } from "../context/SiteContext";
+import Picture from "../ui/Picture";
+import { useSite } from "../../context/SiteContext";
 
 export default function Events() {
   const { events: copy, events: items = [], settings } = useSite();

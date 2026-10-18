@@ -1,0 +1,154 @@
+{
+  "sections": {
+    "settings": {
+      "phone": "+263774178000",
+      "place": "Chikanga",
+      "address": "Stand No. 10B, World Bank Street, Chikanga 1, Mutare, Zimbabwe",
+      "tagline": "A place to worship the Lord",
+      "facebook": "https://www.facebook.com/profile.php?id=100083316068636",
+      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.8186283659225!2d32.611242673890686!3d-18.98361580953511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x192ce906207d6a47%3A0x9693dc47f5d7821c!2sPAOZ%20Victory%20Tabernacle%20Chikanga!5e0!3m2!1sen!2szw!4v1784570406011!5m2!1sen!2szw",
+      "mapsLink": "https://maps.app.goo.gl/QkbCtkm7UCnAUh8x6",
+      "whatsapp": "https://wa.me/263733096391",
+      "churchName": "PAOZ Victory Tabernacle",
+      "copyrightHolder": "TK"
+    },
+    "message": {
+      "body": "Today, we celebrate the unfailing love of Jesus Christ, who offered His life on the cross so that we might be reconciled to God. Salvation is not a reward we earn through our own efforts, but a free and miraculous gift received simply through faith in Him. When we confess Jesus as our Lord and Savior, our past is forgiven, our hearts are made new, and our eternal future is forever secured. Step into His open arms today, knowing that no matter where you have been, His grace is more than enough to redeem and restore your life.",
+      "image": "/assets/bible_one.avif",
+      "title": "Found in His Grace: The Gift of Salvation",
+      "eyebrow": "This Week",
+      "scripture": "Ephesians 2:8-9, John 3:16, Romans 10:9"
+    }
+  },
+  "collections": {
+    "services": [
+      {
+        "id": "9c6f536b-30d3-427c-8dd0-5d22bc4ab3ba",
+        "day": "Sundays",
+        "time": "09:00 - 12:30",
+        "image_url": "/assets/bg1.jpg",
+        "sort_order": 0
+      },
+      {
+        "id": "3c0b3d68-72b9-4397-bee8-c45f19df7184",
+        "day": "Mondays",
+        "time": "17:00 - 18:00",
+        "image_url": "/assets/bg6.jpg",
+        "sort_order": 1
+      },
+      {
+        "id": "b5afcaeb-46df-443a-a0c0-159ca4a1445c",
+        "day": "Wednesdays",
+        "time": "17:00 - 18:00",
+        "image_url": "/assets/bg3.jpg",
+        "sort_order": 2
+      }
+    ],
+    "pillars": [
+      {
+        "id": "7e6a066a-9fa5-42c1-b8a7-c051c4e4d1bb",
+        "title": "Evangelism and Discipleship",
+        "reference": "Matthew 28:19-20",
+        "body": "To lead people to a life-changing relationship with Jesus Christ.",
+        "image_url": "/assets/cross_two.jpg",
+        "sort_order": 0
+      },
+      {
+        "id": "9bf71c3a-2116-4fa9-b867-560a2b495ad1",
+        "title": "Love and Justice",
+        "reference": "Matthew 25:35-36",
+        "body": "To love our neighbours as ourselves, serving our community with compassion.",
+        "image_url": "https://zpxkyrygxrejaljcdzfr.supabase.co/storage/v1/object/public/site-assets/1792344212688-v9b7wu.webp",
+        "sort_order": 1
+      },
+      {
+        "id": "a0171941-4eff-4ad5-af86-e94787f45cd2",
+        "title": "Worship and Presence",
+        "reference": "1 Peter 2:9",
+        "body": "Glorifying God through worship and building a family rooted in His Holy Word.",
+        "image_url": "/assets/bg9.jpg",
+        "sort_order": 2
+      }
+    ],
+    "scriptures": [
+      {
+        "id": "20ee70fd-c4e9-4e3b-b425-10ace6ef2f3d",
+        "reference": "Psalm 16:8",
+        "title": "The Lord at My Right Hand",
+        "verse": "I have set the LORD always before me; for he is at my right hand, so I shall not slip.",
+        "note": "Life anchored in God cannot be shaken, because the One who holds us also holds our steps.",
+        "image_url": "/assets/Psalm16_8.webp",
+        "sort_order": 0
+      },
+      {
+        "id": "0d68ee70-46a0-45d3-8a59-57a5a8cde02f",
+        "reference": "Hebrews 11:1",
+        "title": "The Confidence of Faith",
+        "verse": "Now faith is being sure of what we hope for and being certain of what we do not see.",
+        "note": "Faith lets us walk with God into seasons we cannot yet explain.",
+        "image_url": "/assets/Hebrews11_1.webp",
+        "sort_order": 1
+      },
+      {
+        "id": "97be3e0b-3302-4751-973f-091581e7f242",
+        "reference": "Romans 15:13",
+        "title": "Hope In Jesus",
+        "verse": "May the God of hope fill you with all joy and peace in believing, so that by the power of the Holy Spirit you may abound in hope.",
+        "note": "Every promise we hold rests on the faithfulness of Christ Himself.",
+        "image_url": "/assets/hope-in-jesus.jpg",
+        "sort_order": 2
+      }
+    ],
+    "events": [
+      {
+        "id": "5b888695-48d4-4e47-b297-d7658b3c3983",
+        "title": "Light Up For Christ",
+        "speaker": "Pstr Karen",
+        "event_time": "Friday 19 June 2026 | 21:00",
+        "location": "World Bank Street, Stand No 10B",
+        "description": "An evening of worship, the word and prayer as we light up Chikanga for Christ. Join us and bring someone with you.",
+        "date_month": "Jun",
+        "date_day": "19",
+        "poster_url": "/assets/event_one.png",
+        "show_poster": true,
+        "sort_order": 0
+      },
+      {
+        "id": "bba6dec9-b9a0-47ee-b6c0-aeb7904cacce",
+        "title": "Youth Sunday",
+        "speaker": "Pastor Proud",
+        "event_time": "Sunday 16 August 2026 | 09:00",
+        "location": "World Bank Street, Stand No 10B, Chikanga 1",
+        "description": "Inviting all young people to praise and worship God, learning His Word and receiving His blessing towards our lives.",
+        "date_month": "Aug",
+        "date_day": "16",
+        "poster_url": "https://zpxkyrygxrejaljcdzfr.supabase.co/storage/v1/object/public/site-assets/1791831060470-2dx1ct.jpg",
+        "show_poster": true,
+        "sort_order": 1
+      }
+    ],
+    "giving_methods": [
+      {
+        "id": "0a371339-47e5-4efd-9ca4-92cb4e044823",
+        "label": "Bank Transfer",
+        "value": "Account Name: PAOZ Victory Tabernacle | USD Account No: 01323025070022 | ZiG Account No: 01323025070012",
+        "note": "Bank: CBZ | Branch: Mutare",
+        "sort_order": 0
+      },
+      {
+        "id": "81501864-b68d-484a-abeb-5c3c5fe25897",
+        "label": "EcoCash",
+        "value": "+263 77 417 8000",
+        "note": "Send to the church number and save the confirmation screenshot.",
+        "sort_order": 1
+      },
+      {
+        "id": "559ee9c8-1d95-4ae6-a196-a29970f574a7",
+        "label": "WhatsApp",
+        "value": "+263 73 309 6391",
+        "note": "Message us for offering details and prayer requests.",
+        "sort_order": 2
+      }
+    ]
+  }
+}

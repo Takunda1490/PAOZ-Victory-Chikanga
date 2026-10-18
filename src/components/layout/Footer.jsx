@@ -6,7 +6,7 @@ import {
   Clock,
   ArrowUp,
 } from "lucide-react";
-import { useSite } from "../context/SiteContext";
+import { useSite } from "../../context/SiteContext";
 
 const headingClass =
   "text-lg font-bold font-serif mb-6 text-white relative inline-block";

@@ -1,5 +1,5 @@
 import { HandHeart, MessageCircle } from "lucide-react";
-import { useSite } from "../context/SiteContext";
+import { useSite } from "../../context/SiteContext";
 
 export default function Giving() {
   const { giving: copy, giving_methods: methods = [] } = useSite();

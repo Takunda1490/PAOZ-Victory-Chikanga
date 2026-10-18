@@ -41,7 +41,7 @@ function localVariants(src) {
 export default function Picture({
   src,
   alt,
-  sizes = "wide",
+  _sizes = "wide",
   className,
   style,
   loading = "lazy",
@@ -64,7 +64,6 @@ export default function Picture({
   }
 
   const v = localVariants(src);
-  const sizeAttr = SIZES[sizes] ?? SIZES.wide;
 
   return (
     <picture>

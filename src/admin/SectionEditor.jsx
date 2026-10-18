@@ -12,9 +12,9 @@ function LinksEditor({ value, onChange }) {
 
   return (
     <div className="md:col-span-2">
-      <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+      <span className="block text-sm font-semibold text-gray-700 mb-1.5">
         Menu links
-      </label>
+      </span>
 
       <div className="space-y-2 mb-3">
         {links.map((link, i) => (

@@ -8,6 +8,7 @@ import {
   defaultEvents,
   defaultGivingMethods,
 } from "../data/defaults";
+import generatedContent from "../data/content.generated.json";
 
 const SiteContext = createContext(null);
 
@@ -56,21 +57,32 @@ const deepMerge = (base, override) => {
 };
 
 export function SiteProvider({ children }) {
-  const [sections, setSections] = useState(defaults);
-  const [collections, setCollections] = useState({
-    services: defaultServices,
-    pillars: defaultPillars,
-    scriptures: defaultScriptures,
-    events: defaultEvents,
-    giving_methods: defaultGivingMethods,
+  const genSections = generatedContent?.sections;
+  const genCollections = generatedContent?.collections;
+
+  const [sections, setSections] = useState(() => {
+    const next = { ...defaults };
+    if (genSections) {
+      for (const key of SECTIONS) {
+        if (genSections[key]) next[key] = genSections[key];
+      }
+    }
+    return next;
   });
-  const [loading, setLoading] = useState(isSupabaseConfigured);
+  const [collections, setCollections] = useState(() => ({
+    services: genCollections?.services?.length ? genCollections.services : defaultServices,
+    pillars: genCollections?.pillars?.length ? genCollections.pillars : defaultPillars,
+    scriptures: genCollections?.scriptures?.length ? genCollections.scriptures : defaultScriptures,
+    events: genCollections?.events?.length ? genCollections.events : defaultEvents,
+    giving_methods: genCollections?.giving_methods?.length ? genCollections.giving_methods : defaultGivingMethods,
+  }));
+  const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(isSupabaseConfigured);
   const [saveState, setSaveState] = useState("idle");
 
   const refresh = useCallback(async () => {
-    if (!supabase) {
-      setConnected(false);
+    if (!supabase || generatedContent) {
+      setConnected(Boolean(supabase));
       setLoading(false);
       return;
     }
