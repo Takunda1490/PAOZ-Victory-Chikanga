@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Upload, ImageIcon, X, Loader } from "lucide-react";
+import imageCompression from "browser-image-compression";
 import { supabase } from "../lib/supabase";
 import { bundledAssets } from "./fieldSpecs";
 
@@ -16,22 +17,33 @@ export default function ImageField({ label, value, onChange }) {
     setError("");
     setUploading(true);
 
-    const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
-    const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+    try {
+      const compressedFile = await imageCompression(file, {
+        maxSizeMB: 1.5,
+        maxWidthOrHeight: 1600,
+        useWebWorker: true,
+        fileType: "image/webp",
+      });
 
-    const { error: uploadError } = await supabase.storage
-      .from("site-assets")
-      .upload(path, file, { upsert: true });
+      const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.webp`;
 
-    if (uploadError) {
-      setError(uploadError.message);
+      const { error: uploadError } = await supabase.storage
+        .from("site-assets")
+        .upload(path, compressedFile, { upsert: true });
+
+      if (uploadError) {
+        setError(uploadError.message);
+        setUploading(false);
+        return;
+      }
+
+      const { data } = supabase.storage.from("site-assets").getPublicUrl(path);
+      onChange(data.publicUrl);
+    } catch (err) {
+      setError(err.message || "Failed to compress/upload image");
+    } finally {
       setUploading(false);
-      return;
     }
-
-    const { data } = supabase.storage.from("site-assets").getPublicUrl(path);
-    onChange(data.publicUrl);
-    setUploading(false);
   };
 
   return (
