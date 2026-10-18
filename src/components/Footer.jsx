@@ -26,7 +26,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <img
-                src="/assets/church_logo.png"
+                src="/assets/church_logo.jpg"
                 alt={`${settings.churchName} logo`}
                 className="h-16 w-auto"
               />

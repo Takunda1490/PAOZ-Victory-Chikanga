@@ -42,7 +42,7 @@ export default function Hero() {
 
       <div className="absolute bottom-0 w-full transform translate-y-1/2 z-20 px-4">
         <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl p-6 md:p-10 flex flex-col md:flex-row justify-between items-center gap-8 border-t-4 border-primary-600">
-          <div className="flex items-center gap-4 w-full md:w-auto justify-center md:justify-start">
+          <div className="flex items-center gap-4 w-full md:w-auto justify-start md:justify-start">
             <div className="bg-primary-100 p-4 rounded-full text-primary-700 shrink-0">
               <Clock className="w-8 h-8" />
             </div>
@@ -56,7 +56,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="hidden md:block w-px h-16 bg-gray-200" />
-          <div className="flex items-center gap-4 w-full md:w-auto justify-center md:justify-start">
+          <div className="flex items-center gap-4 w-full md:w-auto justify-start md:justify-start">
             <div className="bg-primary-100 p-4 rounded-full text-primary-700 shrink-0">
               <MapPin className="w-8 h-8" />
             </div>
