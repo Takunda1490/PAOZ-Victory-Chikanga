@@ -72,6 +72,6 @@ Giving section once you have a registered merchant account.
 - `pnpm build` fails on this machine with pnpm's ignored-build-scripts check.
   Run `./node_modules/.bin/vite build` directly, or approve esbuild once with
   `pnpm approve-builds`.
-- For static hosting, `/admin` needs an SPA rewrite. `public/_redirects` covers
-  Netlify; `vercel.json` covers Vercel. Other hosts need an equivalent rule.
+- For static hosting, `/admin` needs an SPA rewrite. `netlify.toml` covers
+  Netlify. Other hosts need an equivalent rule.
 - Supabase is Postgres only — it cannot be pointed at MySQL or MongoDB.
