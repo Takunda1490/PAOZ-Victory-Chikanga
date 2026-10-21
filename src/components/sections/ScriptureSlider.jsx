@@ -67,9 +67,9 @@ export default function ScriptureSlider() {
             {slides.map((slide, i) => (
               <div
                 key={slide.id ?? i}
-                className="min-w-0 shrink-0 grow-0 basis-full grid md:grid-cols-2 gap-8 items-center bg-gray-50 rounded-2xl border border-gray-100 shadow-sm"
+                className="min-w-0 shrink-0 grow-0 basis-full grid md:grid-cols-2 gap-8 items-start md:items-center bg-gray-50 rounded-2xl border border-gray-100 shadow-sm"
               >
-                <div className="relative h-64 sm:h-80 md:h-[420px] bg-primary-900 flex items-center justify-center p-4">
+                <div className="relative w-full h-auto min-h-[200px] sm:h-80 md:h-[420px] bg-primary-900 flex items-center justify-center p-4 mb-6 md:mb-0 z-0">
                   <Picture
                     src={slide.image_url}
                     alt={`${slide.reference} — ${slide.title}`}
@@ -79,20 +79,20 @@ export default function ScriptureSlider() {
                   />
                 </div>
 
-                <div className="px-6 sm:px-10 pb-10 md:pb-0 md:pr-12">
+                <div className="relative z-10 px-6 sm:px-10 pb-10 md:pb-0 md:pr-12 mt-0">
                   <span className="inline-block bg-primary-100 text-primary-800 font-semibold uppercase tracking-wider text-xs px-3 py-1 rounded-full mb-5">
                     {slide.reference}
                   </span>
                   <h3 className="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mb-5">
                     {slide.title}
                   </h3>
-                  <div className="relative pl-6 border-l-4 border-primary-500 mb-5">
-                    <Quote className="w-5 h-5 text-primary-400 absolute -top-1 -left-0 translate-x-[-140%] bg-gray-50" />
-                    <p className="font-serif italic text-lg sm:text-xl text-gray-700 leading-relaxed">
-                      {slide.verse}
-                    </p>
-                  </div>
-                  <p className="text-gray-600 leading-relaxed">{slide.note}</p>
+                   <div className="relative pl-6 border-l-4 border-primary-500 mb-5">
+                     <Quote className="w-5 h-5 text-primary-400 absolute -top-1 -left-0 translate-x-[-140%] bg-gray-50" />
+                     <p className="font-serif italic text-lg sm:text-xl text-gray-700 leading-relaxed">
+                       {slide.verse}
+                     </p>
+                   </div>
+                   <p className="text-gray-600 leading-relaxed">{slide.note}</p>
                 </div>
               </div>
             ))}
