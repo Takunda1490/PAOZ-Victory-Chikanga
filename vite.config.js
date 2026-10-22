@@ -1,13 +1,14 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
+/// <reference types="vite/client" />
 
-if (!process.env.VITE_SUPABASE_URL || !process.env.VITE_SUPABASE_ANON_KEY) {
-  throw new Error(
-    "🚨 CRITICAL: VITE_SUPABASE ENV VARS ARE MISSING DURING BUILD! 🚨",
-  );
-}
+import { createClient } from "@supabase/supabase-js";
 
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-});
+const url = import.meta.env.VITE_SUPABASE_URL;
+const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+export const isSupabaseConfigured = Boolean(url && anonKey);
+
+export const supabase = isSupabaseConfigured
+  ? createClient(url, anonKey, {
+      auth: { persistSession: true, autoRefreshToken: true },
+    })
+  : null;
