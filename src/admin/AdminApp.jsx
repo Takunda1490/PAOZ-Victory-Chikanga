@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import {
   LayoutDashboard,
@@ -15,11 +15,68 @@ import SectionEditor from "./SectionEditor";
 import CollectionEditor from "./CollectionEditor";
 import AdminLogin from "./AdminLogin";
 
+// Session security (client-side).
+const IDLE_TIMEOUT = 15 * 60 * 1000; // 15 minutes of no activity
+const IDLE_WARN = 60 * 1000; // warn 1 minute before forced logout
+const VISIBILITY_TIMEOUT = 5 * 60 * 1000; // 5 minutes with the tab hidden
+
 export default function AdminApp() {
   const [user, setUser] = useState(null);
   const [checking, setChecking] = useState(true);
   const [tab, setTab] = useState(sectionSpecs[0].key);
   const [error, setError] = useState("");
+  const [idleWarning, setIdleWarning] = useState(false);
+  const [everywhereNotice, setEverywhereNotice] = useState(false);
+
+  const idleTimerRef = useRef(null);
+  const warnTimerRef = useRef(null);
+  const visibilityTimerRef = useRef(null);
+
+  const clearTimers = useCallback(() => {
+    if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    if (warnTimerRef.current) clearTimeout(warnTimerRef.current);
+    if (visibilityTimerRef.current) clearTimeout(visibilityTimerRef.current);
+  }, []);
+
+  const signOut = useCallback(async () => {
+    clearTimers();
+    await supabase.auth.signOut();
+    setUser(null);
+  }, [clearTimers]);
+
+  const handleIdleLogout = useCallback(async () => {
+    setIdleWarning(false);
+    clearTimers();
+    await signOut();
+  }, [clearTimers, signOut]);
+
+  const signOutEverywhere = async () => {
+    await signOut();
+    setEverywhereNotice(true);
+    setTimeout(() => setEverywhereNotice(false), 8000);
+  };
+
+  const resetIdle = useCallback(() => {
+    setIdleWarning(false);
+    clearTimers();
+    idleTimerRef.current = setTimeout(handleIdleLogout, IDLE_TIMEOUT);
+    warnTimerRef.current = setTimeout(
+      () => setIdleWarning(true),
+      IDLE_TIMEOUT - IDLE_WARN
+    );
+  }, [clearTimers, handleIdleLogout]);
+
+  const startVisibilityTimer = useCallback(() => {
+    clearTimers();
+    visibilityTimerRef.current = setTimeout(() => {
+      signOut();
+    }, VISIBILITY_TIMEOUT);
+  }, [clearTimers, signOut]);
+
+  const clearVisibilityTimer = useCallback(() => {
+    if (visibilityTimerRef.current) clearTimeout(visibilityTimerRef.current);
+    visibilityTimerRef.current = null;
+  }, []);
 
   useEffect(() => {
     let tag = document.head.querySelector('meta[name="robots"]');
@@ -56,10 +113,33 @@ export default function AdminApp() {
     return () => subscription.unsubscribe();
   }, []);
 
-  const signOut = async () => {
-    await supabase.auth.signOut();
-    setUser(null);
-  };
+  // Inactivity auto-logout: reset on any user interaction.
+  useEffect(() => {
+    if (!supabase) return;
+    const events = ["mousemove", "keydown", "click", "scroll", "touchstart"];
+    events.forEach((e) => window.addEventListener(e, resetIdle));
+    resetIdle();
+    return () => {
+      events.forEach((e) => window.removeEventListener(e, resetIdle));
+      clearTimers();
+    };
+  }, [resetIdle, clearTimers]);
+
+  // Tab/window visibility: sign out if the tab stays hidden too long.
+  useEffect(() => {
+    if (!supabase) return;
+    const onHide = () => startVisibilityTimer();
+    const onShow = () => clearVisibilityTimer();
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) onHide();
+      else onShow();
+    });
+    return () => {
+      document.removeEventListener("visibilitychange", onHide);
+      document.removeEventListener("visibilitychange", onShow);
+      clearVisibilityTimer();
+    };
+  }, [startVisibilityTimer, clearVisibilityTimer]);
 
   const handleCollectionSave = async (rows) => {
     setError("");
@@ -128,6 +208,14 @@ export default function AdminApp() {
               <LogOut className="w-4 h-4" />
               <span className="hidden sm:inline">Sign out</span>
             </button>
+            <button
+              onClick={signOutEverywhere}
+              className="inline-flex items-center gap-2 text-sm font-semibold px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 transition-colors"
+              title="Signs out this device. To sign out of every device, change your password in Supabase Authentication (invalidates all refresh tokens)."
+            >
+              <LogOut className="w-4 h-4" />
+              <span className="hidden sm:inline">Sign out everywhere</span>
+            </button>
           </div>
         </div>
       </header>
@@ -136,6 +224,26 @@ export default function AdminApp() {
         <div className="bg-amber-100 border-b border-amber-300 text-amber-900 text-sm px-4 py-2 text-center">
           Supabase is not connected — the site is running on the built-in
           default content and edits will not be saved.
+        </div>
+      )}
+
+      {everywhereNotice && (
+        <div className="bg-blue-50 border border-blue-200 text-blue-800 text-sm px-4 py-3 text-center">
+          Signed out of this device. To sign out of every device, change your
+          password in <b>Supabase Authentication → Users</b> — changing the
+          password invalidates all refresh tokens across devices.
+        </div>
+      )}
+
+      {idleWarning && (
+        <div className="bg-red-50 border border-red-200 text-red-800 text-sm px-4 py-3 text-center">
+          You&rsquo;ll be signed out due to inactivity in 1 minute.
+          <button
+            onClick={resetIdle}
+            className="ml-3 underline underline-offset-4 hover:text-red-700"
+          >
+            Stay signed in
+          </button>
         </div>
       )}
 
