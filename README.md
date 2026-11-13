@@ -11,7 +11,13 @@ pnpm install
 pnpm dev      # http://localhost:5173
 ```
 
-## Connect Supabase (enables the admin panel)
+## Deploy (Cloudflare Pages)
+
+- Build command: `pnpm build` (or `./node_modules/.bin/vite build`)
+- Output directory: `dist`
+- SPA fallback and headers are provided by `public/_redirects` and
+  `public/_headers`. Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`
+  as environment variables in the Pages project.
 
 1. Create a free project at <https://supabase.com>.
 2. Copy `.env.example` to `.env` and paste in **Settings → API → Project URL**
@@ -72,6 +78,6 @@ Giving section once you have a registered merchant account.
 - `pnpm build` fails on this machine with pnpm's ignored-build-scripts check.
   Run `./node_modules/.bin/vite build` directly, or approve esbuild once with
   `pnpm approve-builds`.
-- For static hosting, `/admin` needs an SPA rewrite. `netlify.toml` covers
-  Netlify. Other hosts need an equivalent rule.
+- For static hosting, `/admin` needs an SPA rewrite. `public/_redirects`
+  covers Cloudflare Pages (and Netlify). Other hosts need an equivalent rule.
 - Supabase is Postgres only — it cannot be pointed at MySQL or MongoDB.

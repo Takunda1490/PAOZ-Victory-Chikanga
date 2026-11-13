@@ -81,8 +81,8 @@ export function SiteProvider({ children }) {
   const [saveState, setSaveState] = useState("idle");
 
   const refresh = useCallback(async () => {
-    if (!supabase || generatedContent) {
-      setConnected(Boolean(supabase));
+    if (!supabase) {
+      setConnected(false);
       setLoading(false);
       return;
     }
