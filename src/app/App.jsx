@@ -13,13 +13,17 @@ import VisitUs from "../components/sections/VisitUs";
 import Giving from "../components/sections/Giving";
 import Footer from "../components/layout/Footer";
 import NotFound from "../components/layout/NotFound";
+import ServicesPage from "../components/pages/ServicesPage";
+import EventsPage from "../components/pages/EventsPage";
+import VisitUsPage from "../components/pages/VisitUsPage";
+import GivingPage from "../components/pages/GivingPage";
 
 const AdminApp = lazy(() => import("../admin/AdminApp"));
 
 export function Website() {
   return (
     <>
-      <Seo />
+      <Seo breadcrumbs={[{ name: "Home", url: "/" }]} />
       <Navbar />
       <main>
         <Hero />
@@ -42,6 +46,10 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Website />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/visit-us" element={<VisitUsPage />} />
+          <Route path="/giving" element={<GivingPage />} />
           <Route
             path="/admin"
             element={

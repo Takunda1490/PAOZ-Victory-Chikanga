@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://paozvictorytabernaclechikanga.netlify.app/sitemap.xml
+Sitemap: https://paoz-victory-tabernacle-chikanga.pages.dev/sitemap.xml

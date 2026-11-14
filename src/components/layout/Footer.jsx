@@ -6,12 +6,26 @@ import {
   Clock,
   ArrowUp,
 } from "lucide-react";
+import { Link } from "react-router-dom";
+import Picture from "../ui/Picture";
 import { useSite } from "../../context/SiteContext";
 
 const headingClass =
   "text-lg font-bold font-serif mb-6 text-white relative inline-block";
 const headingUnderline =
   "absolute bottom-0 left-0 w-1/2 h-1 bg-primary-500 -mb-2";
+
+const ANCHOR_TO_ROUTE = {
+  "#hero": "/",
+  "#about": "/",
+  "#services": "/services",
+  "#events": "/events",
+  "#visit": "/visit-us",
+  "#footer": "/",
+  "#giving": "/giving",
+};
+
+const toRoute = (href) => ANCHOR_TO_ROUTE[href] ?? href;
 
 export default function Footer() {
   const { settings, footer, nav, services: serviceTimes = [] } = useSite();
@@ -25,12 +39,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <img
+              <Picture
                 src="/assets/church_logo.jpg"
                 alt={`${settings.churchName} logo`}
+                eager={true}
+                width={528}
+                height={140}
                 className="h-16 w-auto"
               />
-              
             </div>
             <p className="text-gray-400 mb-6 text-sm leading-relaxed">
               {footer.blurb}
@@ -72,16 +88,20 @@ export default function Footer() {
               <span className={headingUnderline} />
             </h4>
             <ul className="space-y-3 text-gray-400 text-sm">
-              {(nav?.links ?? []).map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="hover:text-primary-400 transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {(nav?.links ?? []).map((link) => {
+                const route = toRoute(link.href);
+                const isExternal = link.href.startsWith("http");
+                return (
+                  <li key={link.href}>
+                    <Link
+                      to={isExternal ? link.href : route}
+                      className="hover:text-primary-400 transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -135,23 +155,29 @@ export default function Footer() {
             {settings.place}. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <a href="#hero" className="hover:text-white transition-colors">
+            <Link
+              to="/"
+              className="hover:text-white transition-colors"
+            >
               {footer.legalOne}
-            </a>
-            <a href="#hero" className="hover:text-white transition-colors">
+            </Link>
+            <Link
+              to="/"
+              className="hover:text-white transition-colors"
+            >
               {footer.legalTwo}
-            </a>
+            </Link>
           </div>
         </div>
       </div>
 
-      <a
-        href="#hero"
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         aria-label="Back to top"
         className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-primary-600 hover:bg-primary-700 text-white flex items-center justify-center shadow-lg transition-colors"
       >
         <ArrowUp className="w-5 h-5" />
-      </a>
+      </button>
     </footer>
   );
 }

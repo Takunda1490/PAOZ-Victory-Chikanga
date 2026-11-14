@@ -1,6 +1,20 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Cross, Phone, HandHeart } from "lucide-react";
+import { Link } from "react-router-dom";
+import Picture from "../ui/Picture";
 import { useSite } from "../../context/SiteContext";
+
+const ANCHOR_TO_ROUTE = {
+  "#hero": "/",
+  "#about": "/",
+  "#services": "/services",
+  "#events": "/events",
+  "#visit": "/visit-us",
+  "#footer": "/",
+  "#giving": "/giving",
+};
+
+const toRoute = (href) => ANCHOR_TO_ROUTE[href] ?? href;
 
 export default function Navbar() {
   const { settings, nav } = useSite();
@@ -62,32 +76,44 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <a
-            href="#hero"
+          <Link
+            to="/"
             onClick={() => setOpen(false)}
             className="flex items-center gap-2"
             aria-label={`${settings.churchName} home`}
           >
-            <img
+            <Picture
               src="/assets/church_logo.jpg"
               alt={`${settings.churchName} logo`}
+              eager={true}
+              width={528}
+              height={140}
               className="h-14 md:h-16 w-auto"
             />
-          </a>
+          </Link>
 
           <div className="hidden lg:flex items-center gap-8">
-            {links.map((link) => (
-              <a key={link.href} href={link.href} className={linkClass(link.href)}>
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#giving"
+            {links.map((link) => {
+              const route = toRoute(link.href);
+              const isExternal = link.href.startsWith("http");
+              return (
+                <Link
+                  key={link.href}
+                  to={isExternal ? link.href : route}
+                  className={linkClass(link.href)}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            <Link
+              to="/giving"
               className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-5 py-2 rounded-full font-semibold text-sm transition-colors duration-300 shadow-lg"
             >
               <HandHeart className="w-4 h-4" />
               {nav.callToAction}
-            </a>
+            </Link>
           </div>
 
           <div className="lg:hidden flex items-center gap-3">
@@ -119,25 +145,29 @@ export default function Navbar() {
       {open && (
         <div className="lg:hidden bg-white text-gray-800 shadow-xl absolute top-full left-0 w-full animate-fade-in">
           <div className="px-4 pt-2 pb-6 space-y-2">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="block px-3 py-3 hover:bg-primary-50 hover:text-primary-600 rounded-md font-semibold text-lg border-b border-gray-100"
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) => {
+              const route = toRoute(link.href);
+              const isExternal = link.href.startsWith("http");
+              return (
+                <Link
+                  key={link.href}
+                  to={isExternal ? link.href : route}
+                  onClick={() => setOpen(false)}
+                  className="block px-3 py-3 hover:bg-primary-50 hover:text-primary-600 rounded-md font-semibold text-lg border-b border-gray-100"
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <div className="pt-4">
-              <a
-                href="#giving"
+              <Link
+                to="/giving"
                 onClick={() => setOpen(false)}
                 className="flex items-center justify-center gap-2 block w-full text-center bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-full font-semibold transition-colors duration-300"
               >
                 <Cross className="w-4 h-4" />
                 {nav.callToAction}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

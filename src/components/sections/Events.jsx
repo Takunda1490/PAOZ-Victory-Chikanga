@@ -1,9 +1,16 @@
 import { Clock, MapPin, Calendar, ChevronRight } from "lucide-react";
 import Picture from "../ui/Picture";
+import { useEffect } from "react";
 import { useSite } from "../../context/SiteContext";
+
+const MONTHS = {
+  Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+  Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
+};
 
 export default function Events() {
   const { events: copy, events: items = [], settings } = useSite();
+  const schemaRef = { current: null };
 
   // A saved row can legitimately have these fields blank, so fall back rather
   // than rendering an empty card.
@@ -11,6 +18,81 @@ export default function Events() {
     copy.calendarBody || "These are the upcoming events. More will be uploaded soon.";
   const calendarTitle = copy.calendarTitle || "Coming Soon";
   const calendarCta = copy.calendarCta || "Ask For Dates";
+
+  useEffect(() => {
+    if (!settings || !items?.length) return;
+
+    if (schemaRef.current) {
+      schemaRef.current.remove();
+      schemaRef.current = null;
+    }
+
+    const eventsData = items.map((event) => {
+      let startDate;
+      try {
+        const match = event.event_time.match(/(\d{1,2})\s+(\w+)\s+(\d{4})\s*\|\s*(\d{1,2}):(\d{2})/);
+        if (match) {
+          const [, day, month, year, hour, minute] = match;
+          const monthIndex = MONTHS[month];
+          if (monthIndex !== undefined) {
+            const date = new Date(
+              Date.UTC(parseInt(year), monthIndex, parseInt(day), parseInt(hour), parseInt(minute)),
+            );
+            startDate = date.toISOString();
+          }
+        }
+      } catch {
+        // Ignore unparseable event_time; startDate stays undefined.
+      }
+
+      return {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        name: event.title,
+        startDate: startDate || undefined,
+        location: event.location
+          ? {
+              "@type": "Place",
+              name: event.location,
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: event.location,
+                addressLocality: "Chikanga 1",
+                addressCountry: "ZW",
+              },
+            }
+          : undefined,
+        image: event.poster_url
+          ? [
+              {
+                "@type": "ImageObject",
+                url: event.poster_url,
+              },
+            ]
+          : undefined,
+        description: event.description || undefined,
+        organizer: {
+          "@type": "Organization",
+          name: settings.churchName || "PAOZ Victory Tabernacle Chikanga",
+          url: "https://paoz-victory-tabernacle-chikanga.pages.dev/",
+        },
+      };
+    });
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(eventsData);
+    document.head.appendChild(script);
+    schemaRef.current = script;
+
+    return () => {
+      if (schemaRef.current) {
+        schemaRef.current.remove();
+        schemaRef.current = null;
+      }
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items, settings]);
 
   return (
     <section

@@ -15,6 +15,7 @@ export default function About() {
                 src={about.image}
                 alt="Scripture and worship"
                 sizes="wide"
+                eager={true}
                 className="rounded-lg shadow-xl w-full object-cover h-[500px]"
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl hidden md:block border-t-4 border-primary-600">

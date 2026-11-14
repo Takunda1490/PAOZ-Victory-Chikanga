@@ -1,12 +1,16 @@
-// src/components/Picture.jsx
+// src/components/ui/Picture.jsx
 //
-// Renders an <img> through a <picture> element so the browser picks the
+// Renders an  through a <picture> element so the browser picks the
 // smallest supported format (AVIF -> WebP -> JPEG fallback) for our local
-// assets. URLs that are NOT local (e.g. Supabase storage paths, external
-// images) are passed straight through as a plain <img>.
+// assets. Supabase Storage and external URLs are wrapped in <picture> with
+// proper loading and dimension attributes so they don't cause layout shift.
+// Local assets that lack a WebP/AVIF variant fall back to the JPEG/PNG source.
 //
 // Defaults to lazy loading so only images about to enter the viewport are
 // fetched. Pass eager={true} (or loading="eager") for the LCP image.
+//
+// width and height props are accepted for all images to reserve space and
+// prevent Cumulative Layout Shift (CLS).
 
 import { useMemo } from "react";
 
@@ -46,33 +50,44 @@ export default function Picture({
   style,
   loading = "lazy",
   eager = false,
+  width,
+  height,
   ...rest
 }) {
   const local = useMemo(() => isLocal(src), [src]);
+  const imgLoading = eager ? "eager" : loading;
 
-  if (!local) {
+  // Local assets: AVIF -> WebP -> JPEG fallback via <picture>.
+  if (local) {
+    const v = localVariants(src);
     return (
-      <img
-        src={src}
-        alt={alt}
-        loading={loading}
-        className={className}
-        style={style}
-        {...rest}
-      />
+      <picture>
+        <source srcSet={v.avif} type="image/avif" />
+        <source srcSet={v.webp} type="image/webp" />
+        <img
+          src={v.jpg}
+          alt={alt}
+          loading={imgLoading}
+          width={width}
+          height={height}
+          className={className}
+          style={style}
+          {...rest}
+        />
+      </picture>
     );
   }
 
-  const v = localVariants(src);
-
+  // Supabase Storage and external URLs: wrap in <picture> for consistency,
+  // with width/height and loading attributes to prevent CLS.
   return (
     <picture>
-      <source srcSet={v.avif} type="image/avif" />
-      <source srcSet={v.webp} type="image/webp" />
       <img
-        src={v.jpg}
+        src={src}
         alt={alt}
-        loading={eager ? "eager" : loading}
+        loading={imgLoading}
+        width={width}
+        height={height}
         className={className}
         style={style}
         {...rest}

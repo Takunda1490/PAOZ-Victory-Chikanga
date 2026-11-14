@@ -13,6 +13,7 @@ export default function Message() {
                 src={message.image}
                 alt="Open Bible"
                 sizes="wide"
+                eager={true}
                 className="rounded-lg shadow-xl w-full object-cover h-[420px]"
               />
           </div>
