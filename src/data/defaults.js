@@ -196,6 +196,7 @@ export const defaultEvents = [
     date_day: "19",
     poster_url: "/assets/event_one.png",
     show_poster: true,
+    poster_only: false,
   },
 ];
 

@@ -227,7 +227,7 @@ export const collectionSpecs = [
     table: "events",
     label: "Events",
     description:
-      "Each event renders a details card and, when enabled, a poster card beside it.",
+      "Each event renders a details card and, when enabled, a poster card beside it. Turn on “Poster only” to hide the details card and show just the poster image.",
     titleKey: "title",
     fields: [
       text("title", "Event title"),
@@ -238,6 +238,7 @@ export const collectionSpecs = [
       text("location", "Location"),
       area("description", "Description"),
       bool("show_poster", "Show the poster card beside this event"),
+      bool("poster_only", "Poster only (hide the details card)"),
       image("poster_url", "Poster image"),
     ],
     newItem: {
@@ -250,6 +251,7 @@ export const collectionSpecs = [
       date_day: "",
       poster_url: "",
       show_poster: true,
+      poster_only: false,
     },
   },
   {

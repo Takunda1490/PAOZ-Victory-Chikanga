@@ -47,6 +47,7 @@ create table if not exists public.events (
   date_day     text        not null default '',
   poster_url   text        not null default '',
   show_poster  boolean     not null default true,
+  poster_only  boolean     not null default false,
   sort_order   integer     not null default 0
 );
 
