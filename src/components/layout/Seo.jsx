@@ -15,6 +15,19 @@ const setMeta = (selector, attribute, value) => {
   tag.setAttribute(attribute, value);
 };
 
+const toAbsolute = (path = "/") =>
+  SITE_URL.replace(/\/+$/, "") + (path === "/" ? "/" : path);
+
+const setCanonical = (href) => {
+  let link = document.head.querySelector('link[rel="canonical"]');
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+  }
+  link.setAttribute("href", href);
+};
+
 export default function Seo({ title, description, breadcrumbs }) {
   const { settings } = useSite();
 
@@ -28,10 +41,15 @@ export default function Seo({ title, description, breadcrumbs }) {
 
     document.title = pageTitle;
 
+    const pageUrl = toAbsolute(
+      breadcrumbs?.length ? breadcrumbs[breadcrumbs.length - 1].url : "/",
+    );
+    setCanonical(pageUrl);
+
     setMeta('meta[name="description"]', "content", pageDescription);
     setMeta('meta[property="og:title"]', "content", pageTitle);
     setMeta('meta[property="og:description"]', "content", pageDescription);
-    setMeta('meta[property="og:url"]', "content", SITE_URL);
+    setMeta('meta[property="og:url"]', "content", pageUrl);
     setMeta('meta[name="twitter:title"]', "content", pageTitle);
     setMeta('meta[name="twitter:description"]', "content", pageDescription);
 
@@ -51,7 +69,7 @@ export default function Seo({ title, description, breadcrumbs }) {
           "@type": "ListItem",
           position: i + 1,
           name: item.name,
-          item: SITE_URL + (item.url === "/" ? "" : item.url),
+          item: toAbsolute(item.url),
         })),
       });
     } else {
