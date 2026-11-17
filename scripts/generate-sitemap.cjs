@@ -8,10 +8,12 @@ const SITE_URL = "https://paoz-victory-tabernacle-chikanga.pages.dev";
 // Public, indexable routes only (admin is excluded).
 const ROUTES = [
   "/",
+  "/about",
   "/services",
   "/events",
   "/visit-us",
   "/giving",
+  "/contact",
 ];
 
 const urls = ROUTES.map((route) => {

@@ -17,6 +17,8 @@ import ServicesPage from "../components/pages/ServicesPage";
 import EventsPage from "../components/pages/EventsPage";
 import VisitUsPage from "../components/pages/VisitUsPage";
 import GivingPage from "../components/pages/GivingPage";
+import AboutPage from "../components/pages/AboutPage";
+import ContactPage from "../components/pages/ContactPage";
 
 const AdminApp = lazy(() => import("../admin/AdminApp"));
 
@@ -50,6 +52,8 @@ export default function App() {
           <Route path="/events" element={<EventsPage />} />
           <Route path="/visit-us" element={<VisitUsPage />} />
           <Route path="/giving" element={<GivingPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route
             path="/admin"
             element={

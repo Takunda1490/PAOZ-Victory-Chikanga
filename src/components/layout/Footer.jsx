@@ -17,12 +17,13 @@ const headingUnderline =
 
 const ANCHOR_TO_ROUTE = {
   "#hero": "/",
-  "#about": "/",
+  "#about": "/about",
   "#services": "/services",
   "#events": "/events",
   "#visit": "/visit-us",
-  "#footer": "/",
+  "#footer": "/contact",
   "#giving": "/giving",
+  "#contact": "/contact",
 };
 
 const toRoute = (href) => ANCHOR_TO_ROUTE[href] ?? href;
