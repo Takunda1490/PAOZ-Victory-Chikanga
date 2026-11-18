@@ -9,6 +9,9 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .eslintcache
+.kilo/
+tests/
+template/
 
 # Playwright
 test-results/
